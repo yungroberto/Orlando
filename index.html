@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#141A2E">
+<meta name="robots" content="noindex, nofollow">
+<link rel="manifest" href="./manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Orlando 26">
+<link rel="apple-touch-icon" href="./icon-180.png">
+<link rel="icon" href="./icon-192.png">
+<title>Orlando 2026</title>
+<style>
+  :root{
+    --bg:#F2F4FA;
+    --ink:#141A2E;
+    --dim:#6B7590;
+    --card:#FFFFFF;
+    --hair:#E7EAF3;
+    --disney:#6C4BD6;
+    --universal:#0FA396;
+    --pausa:#F0961E;
+    --logistica:#2E6BE6;
+    --hot:#FF4E64;
+    --mango:#FF8A2B;
+    --r:22px;
+    --sh:0 6px 22px rgba(20,26,46,.07);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg);color:var(--ink);
+    font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI Variable","Segoe UI",Inter,Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:calc(96px + env(safe-area-inset-bottom));
+  }
+  button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+  a{text-decoration:none;color:inherit}
+  :focus-visible{outline:2.5px solid var(--mango);outline-offset:3px;border-radius:10px}
+  .wrap{max-width:560px;margin:0 auto;padding:0 16px}
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:#141A2E;color:#fff;border-radius:0 0 30px 30px;
+    padding:calc(20px + env(safe-area-inset-top)) 20px 24px;
+    position:relative;overflow:hidden;
+  }
+  .hero>*{position:relative;z-index:1}
+  .hero .art{position:absolute;inset:0;z-index:0}
+  .hero .art svg{width:100%;height:100%;display:block}
+  .hero .tag{
+    display:inline-flex;align-items:center;gap:7px;
+    background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.16);
+    padding:5px 11px 5px 8px;border-radius:100px;font-size:12.5px;color:#DDE3F5;
+  }
+  .hero .tag i{width:6px;height:6px;border-radius:50%;background:#4ADE80;display:block}
+  .hero h1{margin:14px 0 0;font-size:29px;font-weight:800;letter-spacing:-.03em;line-height:1.1}
+  .hero .big{display:flex;align-items:flex-end;gap:11px;margin-top:16px}
+  .hero .big b{
+    font-size:58px;font-weight:800;letter-spacing:-.05em;line-height:.85;
+    background:linear-gradient(96deg,#FFB35C,#FF6A83);-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero .big span{font-size:14.5px;color:#B7C0DB;padding-bottom:5px;max-width:180px}
+
+  /* ---------- faixa de dias ---------- */
+  .strip{display:flex;gap:8px;overflow-x:auto;padding:16px 16px 6px;scrollbar-width:none}
+  .strip::-webkit-scrollbar{display:none}
+  .pill{
+    flex:0 0 auto;background:var(--card);border-radius:17px;padding:9px 13px 10px;min-width:58px;
+    text-align:center;box-shadow:0 2px 8px rgba(20,26,46,.05);position:relative;transition:transform .12s
+  }
+  .pill:active{transform:scale(.95)}
+  .pill .wd{font-size:10.5px;color:var(--dim);font-weight:600;letter-spacing:.03em}
+  .pill .dn{font-size:20px;font-weight:700;letter-spacing:-.02em;margin-top:1px}
+  .pill .dot{width:6px;height:6px;border-radius:50%;margin:5px auto 0}
+  .pill[aria-pressed="true"]{background:var(--ink);color:#fff;box-shadow:0 8px 18px rgba(20,26,46,.22)}
+  .pill[aria-pressed="true"] .wd{color:#9AA6C4}
+  .pill.today:after{
+    content:"";position:absolute;inset:-3px;border:2.5px solid var(--hot);border-radius:20px;pointer-events:none
+  }
+
+  /* ---------- cartão do dia ---------- */
+  .day{background:var(--card);border-radius:26px;box-shadow:var(--sh);overflow:hidden;margin-top:10px}
+  .day .top{padding:20px 20px 18px;color:#fff;position:relative}
+  .day .top:after{
+    content:"";position:absolute;right:-30px;top:-40px;width:150px;height:150px;border-radius:50%;
+    background:rgba(255,255,255,.10)
+  }
+  .day .kind{
+    display:inline-block;background:rgba(255,255,255,.2);padding:4px 10px;border-radius:100px;
+    font-size:11.5px;font-weight:700;letter-spacing:.04em
+  }
+  .day .top h2{margin:11px 0 0;font-size:25px;font-weight:800;letter-spacing:-.03em;line-height:1.15;position:relative}
+  .day .top p{margin:8px 0 0;font-size:14px;color:rgba(255,255,255,.85);position:relative;max-width:34ch}
+
+  .tl{list-style:none;margin:0;padding:18px 20px 6px}
+  .tl li{display:grid;grid-template-columns:50px 20px 1fr;gap:0 4px;position:relative;padding-bottom:18px}
+  .tl li:last-child{padding-bottom:6px}
+  .tl .t{font-size:13px;font-weight:700;color:var(--dim);font-variant-numeric:tabular-nums;padding-top:2px}
+  .tl .rail{display:flex;flex-direction:column;align-items:center}
+  .tl .rail i{width:9px;height:9px;border-radius:50%;background:var(--hair);border:2.5px solid #fff;box-shadow:0 0 0 2px var(--hair);margin-top:5px}
+  .tl li.key .rail i{background:var(--hot);box-shadow:0 0 0 2px rgba(255,78,100,.25)}
+  .tl .rail b{flex:1;width:2px;background:var(--hair);margin-top:5px;border-radius:2px}
+  .tl li:last-child .rail b{display:none}
+  .tl .x{font-size:15px;line-height:1.45;padding-top:0}
+  .tl .x em{display:block;font-style:normal;font-size:13px;color:var(--dim);margin-top:3px}
+
+  .callout{margin:4px 20px 16px;padding:14px 16px;border-radius:18px;font-size:14px;line-height:1.5}
+  .callout.tip{background:#F4F1FE;color:#43307E}
+  .callout.warn{background:#FFF1E9;color:#9A4415}
+  .callout b{font-weight:700}
+  .dine{margin:0 20px 18px;font-size:14px;color:var(--dim)}
+  .dine b{color:var(--ink)}
+
+  details.mk{margin:0 20px 16px;background:#F6F7FC;border-radius:18px;overflow:hidden}
+  details.mk summary{padding:13px 16px;font-size:14px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between}
+  details.mk summary::-webkit-details-marker{display:none}
+  details.mk summary:after{content:"＋";color:var(--dim)}
+  details.mk[open] summary:after{content:"−"}
+  details.mk ul{margin:0;padding:0 16px 14px 34px;font-size:14px;color:var(--dim)}
+  details.mk li{padding:3px 0}
+
+  .acts{display:flex;flex-wrap:wrap;gap:9px;padding:0 20px 18px}
+  .go{
+    display:inline-flex;align-items:center;gap:7px;background:#F1F3FA;border-radius:100px;
+    padding:11px 16px;font-size:14px;font-weight:600
+  }
+  .go.prime{background:var(--ink);color:#fff}
+  .go svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+  .notewrap{padding:0 20px 20px}
+  .notewrap label{display:block;font-size:13px;font-weight:600;color:var(--dim);margin-bottom:8px}
+  textarea{
+    width:100%;min-height:92px;resize:vertical;border:0;border-radius:18px;padding:14px 16px;
+    font:15px/1.55 inherit;background:#F6F7FC;color:var(--ink)
+  }
+  textarea::placeholder{color:#A6AEC6}
+
+  /* ---------- blocos gerais ---------- */
+  .sect{font-size:13px;font-weight:700;color:var(--dim);letter-spacing:.04em;margin:26px 0 10px;padding-left:4px}
+  .box{background:var(--card);border-radius:24px;box-shadow:var(--sh);padding:20px;margin-bottom:14px}
+  .box h3{margin:0;font-size:18px;font-weight:700;letter-spacing:-.02em}
+  .box .sub{font-size:13.5px;color:var(--dim);margin-top:3px}
+  .ico{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;flex:0 0 auto;font-size:19px}
+  .boxhead{display:flex;gap:13px;align-items:center;margin-bottom:14px}
+
+  .kv{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#F6F7FC;border-radius:16px;padding:12px 14px;margin-bottom:10px}
+  .kv .k{font-size:11.5px;color:var(--dim);font-weight:600}
+  .kv .v{font-size:18px;font-weight:700;letter-spacing:.02em;font-variant-numeric:tabular-nums;margin-top:1px}
+  .kv input{border:0;background:transparent;font:700 18px/1.2 inherit;letter-spacing:.02em;font-variant-numeric:tabular-nums;color:var(--ink);width:100%;padding:2px 0 0}
+  .kv input::placeholder{font-weight:600;color:#B4BBCE;font-size:15px}
+  .kv button{background:#fff;border-radius:100px;padding:8px 14px;font-size:13px;font-weight:600;box-shadow:0 1px 4px rgba(20,26,46,.08)}
+  .desc{font-size:14px;color:var(--dim);line-height:1.55;margin:0 0 14px}
+  .links{display:flex;flex-wrap:wrap;gap:9px}
+
+  .row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid var(--hair)}
+  .row:last-child{border-bottom:0}
+  .row .n{font-size:15px;font-weight:600}
+  .row .a{font-size:12.5px;color:var(--dim);margin-top:2px;line-height:1.35}
+  .rowgo{display:flex;gap:8px;flex:0 0 auto}
+  .circ{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700}
+  .circ.w{background:#E8F7F5;color:#0B7A70}
+  .circ.m{background:#F1F3FA;color:var(--dim)}
+
+  /* ---------- dólar ---------- */
+  .conv{display:grid;grid-template-columns:1fr 34px 1fr;align-items:end;gap:6px}
+  .f label{display:block;font-size:11.5px;font-weight:700;color:var(--dim);margin-bottom:6px}
+  .f input{width:100%;border:0;border-radius:18px;padding:15px 14px;font:800 24px/1 inherit;letter-spacing:-.02em;background:#F6F7FC;color:var(--ink)}
+  .eq{text-align:center;color:var(--dim);padding-bottom:18px;font-size:17px}
+  .rate{display:flex;align-items:center;gap:9px;margin-top:14px;font-size:13.5px;color:var(--dim)}
+  .rate input{width:86px;border:0;background:#F6F7FC;border-radius:12px;padding:9px 11px;font:600 15px inherit;color:var(--ink)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .chips button{background:#F1F3FA;border-radius:100px;padding:9px 15px;font-size:14px;font-weight:600}
+  .exp{display:flex;gap:8px;margin-bottom:14px}
+  .exp input{border:0;background:#F6F7FC;border-radius:16px;padding:13px 14px;font:15px inherit;color:var(--ink);min-width:0}
+  .exp input[type=text]{flex:1}
+  .exp input[type=number]{width:96px}
+  .exp button{background:var(--ink);color:#fff;border-radius:16px;padding:0 20px;font-size:20px;font-weight:600}
+  .elist{list-style:none;margin:0;padding:0}
+  .elist li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--hair);font-size:15px}
+  .elist .del{color:#C9CEDD;font-size:20px;padding:0 4px;line-height:1}
+  .sum{
+    margin-top:16px;border-radius:20px;padding:17px 19px;color:#fff;
+    background:linear-gradient(102deg,#FF8A2B,#FF4E64)
+  }
+  .sum .l{font-size:12.5px;opacity:.85;font-weight:600}
+  .sum .v{font-size:30px;font-weight:800;letter-spacing:-.03em;margin-top:2px}
+  .sum .v2{font-size:15px;opacity:.9;margin-top:2px}
+
+  /* ---------- checklist ---------- */
+  .prog{height:6px;background:var(--hair);border-radius:100px;overflow:hidden;margin:12px 0 4px}
+  .prog i{display:block;height:100%;background:linear-gradient(90deg,#FF8A2B,#FF4E64);border-radius:100px;transition:width .25s}
+  .progn{font-size:12.5px;color:var(--dim);font-weight:600}
+  .chk{display:flex;gap:13px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--hair);font-size:15px;line-height:1.4;cursor:pointer}
+  .chk:last-child{border-bottom:0}
+  .chk input{position:absolute;opacity:0;pointer-events:none}
+  .chk .bx{
+    width:24px;height:24px;border-radius:9px;background:#F1F3FA;flex:0 0 auto;display:grid;place-items:center;
+    margin-top:1px;transition:background .15s
+  }
+  .chk .bx svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;opacity:0}
+  .chk.done .bx{background:linear-gradient(135deg,#FF8A2B,#FF4E64)}
+  .chk.done .bx svg{opacity:1}
+  .chk.done span{color:#A6AEC6;text-decoration:line-through}
+
+  /* ---------- nav ---------- */
+  nav{
+    position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom));
+    z-index:40;display:flex;gap:2px;background:rgba(20,26,46,.94);backdrop-filter:blur(14px) saturate(1.6);
+    border-radius:100px;padding:6px;box-shadow:0 12px 30px rgba(20,26,46,.3);max-width:calc(100% - 28px)
+  }
+  nav button{
+    display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 15px 8px;border-radius:100px;
+    font-size:10.5px;font-weight:600;color:#8F9ABA;transition:background .18s,color .18s
+  }
+  nav svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+  nav button[aria-selected="true"]{background:#fff;color:var(--ink)}
+  .panel[hidden]{display:none}
+  .foot{text-align:center;font-size:12.5px;color:#9AA3BC;padding:26px 20px 8px;line-height:1.5}
+  @media (prefers-reduced-motion:no-preference){
+    .panel{animation:in .22s cubic-bezier(.2,.7,.3,1)}
+    @keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="art" aria-hidden="true"><svg viewBox="0 0 800 320" preserveAspectRatio="xMidYMax slice">
+<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#221B4E"/><stop offset="52%" stop-color="#5B2B6B"/><stop offset="100%" stop-color="#C0455C"/></linearGradient>
+<radialGradient id="glow" cx="50%" cy="100%" r="70%"><stop offset="0" stop-color="#FFB35C" stop-opacity=".55"/><stop offset="1" stop-color="#FFB35C" stop-opacity="0"/></radialGradient>
+<linearGradient id="veil" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#12172B" stop-opacity=".82"/><stop offset="60%" stop-color="#12172B" stop-opacity=".55"/><stop offset="100%" stop-color="#12172B" stop-opacity=".72"/></linearGradient>
+</defs>
+<rect width="800" height="320" fill="url(#sky)"/>
+<g fill="#fff">
+<circle cx="60" cy="40" r="1.5" opacity=".8"/><circle cx="140" cy="80" r="1" opacity=".6"/><circle cx="255" cy="35" r="1.6" opacity=".7"/><circle cx="330" cy="95" r="1" opacity=".5"/><circle cx="470" cy="45" r="1.4" opacity=".75"/><circle cx="600" cy="70" r="1" opacity=".55"/><circle cx="700" cy="30" r="1.7" opacity=".8"/><circle cx="760" cy="110" r="1.1" opacity=".6"/>
+</g>
+<g stroke-linecap="round">
+<g transform="translate(180,80)" opacity=".85">
+<g stroke="#FFD27A" stroke-width="2.2">
+<path d="M0 0 L0 -34"/><path d="M0 0 L24 -24"/><path d="M0 0 L34 0"/><path d="M0 0 L24 24"/><path d="M0 0 L0 34"/><path d="M0 0 L-24 24"/><path d="M0 0 L-34 0"/><path d="M0 0 L-24 -24"/>
+</g>
+<g fill="#FFF0C4"><circle cx="0" cy="-38" r="2.4"/><circle cx="27" cy="-27" r="2.4"/><circle cx="38" cy="0" r="2.4"/><circle cx="27" cy="27" r="2.4"/><circle cx="0" cy="38" r="2.4"/><circle cx="-27" cy="27" r="2.4"/><circle cx="-38" cy="0" r="2.4"/><circle cx="-27" cy="-27" r="2.4"/></g>
+</g>
+<g transform="translate(620,60) scale(.8)" opacity=".75">
+<g stroke="#8FD4FF" stroke-width="2">
+<path d="M0 0 L0 -32"/><path d="M0 0 L23 -23"/><path d="M0 0 L32 0"/><path d="M0 0 L23 23"/><path d="M0 0 L0 32"/><path d="M0 0 L-23 23"/><path d="M0 0 L-32 0"/><path d="M0 0 L-23 -23"/>
+</g>
+</g>
+</g>
+<ellipse cx="400" cy="320" rx="330" ry="150" fill="url(#glow)"/>
+<g fill="#1B1436">
+<path d="M366 320 v-96 h14 v-18 l10-16 10 16 v18 h14 v96z"/>
+<path d="M330 320 v-70 h12 v-14 l9-14 9 14 v14 h12 v70z"/>
+<path d="M418 320 v-70 h12 v-14 l9-14 9 14 v14 h12 v70z"/>
+<path d="M300 320 v-46 h58 v46z"/><path d="M442 320 v-46 h58 v46z"/>
+<path d="M282 320 v-30 h236 v30z"/>
+<path d="M400 320 v-40 a14 14 0 0 1 28 0" opacity="0"/>
+</g>
+<g fill="#FFD27A" opacity=".9">
+<rect x="391" y="252" width="6" height="9" rx="3"/><rect x="403" y="252" width="6" height="9" rx="3"/>
+<rect x="344" y="278" width="5" height="8" rx="2.5"/><rect x="451" y="278" width="5" height="8" rx="2.5"/>
+<rect x="316" y="292" width="5" height="9" rx="2.5"/><rect x="330" y="292" width="5" height="9" rx="2.5"/>
+<rect x="465" y="292" width="5" height="9" rx="2.5"/><rect x="479" y="292" width="5" height="9" rx="2.5"/>
+</g>
+<g fill="#150F2C">
+<path d="M96 320 v-58 c0-6 8-6 8 0 v58z"/>
+<path d="M100 268 c-20-16-42-14-54-2 20-4 36 0 50 8z"/><path d="M100 266 c18-18 42-18 56-6 -22-4-38 2-52 12z"/>
+<path d="M100 262 c-6-22 4-40 18-46 -10 14-14 30-12 46z"/><path d="M100 262 c8-20 0-40-14-48 8 16 12 32 12 48z"/>
+<path d="M706 320 v-50 c0-6 8-6 8 0 v50z"/>
+<path d="M710 276 c-18-14-38-12-48-2 18-4 32 0 44 8z"/><path d="M710 274 c16-16 38-16 50-6 -20-4-34 2-46 12z"/>
+<path d="M710 270 c-6-20 4-36 16-42 -9 12-13 27-11 42z"/>
+</g>
+<rect width="800" height="320" fill="url(#veil)"/>
+</svg></div>
+  <span class="tag"><i></i>11 – 23 de setembro · Orlando</span>
+  <h1 id="heroTitle">Família Yung · Férias Set/26 Orlando!</h1>
+  <div class="big"><b id="cdNum">–</b><span id="cdTxt"></span></div>
+</div>
+
+<nav role="tablist">
+  <button role="tab" aria-selected="true" data-tab="dias">
+    <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="4"/><path d="M8 3v4M16 3v4M3 11h18"/></svg>Roteiro</button>
+  <button role="tab" aria-selected="false" data-tab="reservas">
+    <svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="12" rx="3"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7M3 12h18"/></svg>Reservas</button>
+  <button role="tab" aria-selected="false" data-tab="lugares">
+    <svg viewBox="0 0 24 24"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Mapa</button>
+  <button role="tab" aria-selected="false" data-tab="dolar">
+    <svg viewBox="0 0 24 24"><path d="M12 3v18M16 7.5c0-1.7-1.8-2.5-4-2.5s-4 .8-4 2.5S9.8 10 12 10s4 .9 4 2.8-1.8 2.7-4 2.7-4-.8-4-2.7"/></svg>Dólar</button>
+  <button role="tab" aria-selected="false" data-tab="prep">
+    <svg viewBox="0 0 24 24"><path d="M9 11.5l2.5 2.5L20 5.5"/><path d="M20 12.5V19a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg>Prep</button>
+</nav>
+
+<main>
+  <section class="panel" id="p-dias">
+    <div class="strip" id="strip"></div>
+    <div class="wrap"><div id="dayBox"></div></div>
+  </section>
+  <section class="panel wrap" id="p-reservas" hidden></section>
+  <section class="panel wrap" id="p-lugares" hidden></section>
+
+  <section class="panel wrap" id="p-dolar" hidden>
+    <div class="sect">CONVERSOR</div>
+    <div class="box">
+      <div class="conv">
+        <div class="f"><label for="usd">Dólar</label><input id="usd" type="number" inputmode="decimal" value="10"></div>
+        <div class="eq">≈</div>
+        <div class="f"><label for="brl">Real</label><input id="brl" type="number" inputmode="decimal"></div>
+      </div>
+      <div class="rate">R$ <input id="rate" type="number" inputmode="decimal" step="0.01"> por US$ 1</div>
+      <div class="chips" id="quick"></div>
+    </div>
+    <div class="sect">GASTOS</div>
+    <div class="box">
+      <div class="exp">
+        <input type="text" id="eDesc" placeholder="No que gastou" autocomplete="off">
+        <input type="number" id="eVal" inputmode="decimal" placeholder="US$">
+        <button id="eAdd" aria-label="Adicionar gasto">+</button>
+      </div>
+      <ul class="elist" id="eList"></ul>
+      <div class="sum">
+        <div class="l">Total gasto</div>
+        <div class="v" id="eTot">US$ 0,00</div>
+        <div class="v2" id="eTotBrl">R$ 0,00</div>
+      </div>
+      <p class="desc" style="margin:14px 0 0">Limite alfandegário na volta: US$ 1.000 em bens por pessoa.</p>
+    </div>
+  </section>
+
+  <section class="panel wrap" id="p-prep" hidden></section>
+  <div class="foot">Horários de shows e parques mudam.<br>Confirme no My Disney Experience e no Universal Orlando na véspera.</div>
+</main>
+
+<script>
+/* ===== armazenamento: Claude → navegador → memória ===== */
+const mem={};
+const store={
+  async get(k){
+    try{const r=await window.storage.get(k);if(r)return JSON.parse(r.value)}catch(e){}
+    try{const v=localStorage.getItem(k);if(v!==null)return JSON.parse(v)}catch(e){}
+    return mem[k]??null;
+  },
+  async set(k,v){
+    mem[k]=v;
+    try{await window.storage.set(k,JSON.stringify(v));return}catch(e){}
+    try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}
+  }
+};
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
+
+/* ===== dados ===== */
+const HOTEL="Home2 Suites by Hilton, 12107 Regency Village Dr, Orlando, FL 32821";
+const C={disney:"#6C4BD6",universal:"#0FA396",pausa:"#F0961E",logistica:"#2E6BE6"};
+const KIND={disney:"DISNEY",universal:"UNIVERSAL",pausa:"DIA DE PAUSA",logistica:"LOGÍSTICA"};
+
+const DAYS=[
+{n:1,date:"11/09",wd:"SEX",iso:"2026-09-11",kind:"logistica",title:"Chegada e primeiros passos",
+ tagline:"Pouso às 16h20, carro na Alamo, mercado e dormir cedo.",
+ items:[
+  ["16h20","Pouso no MCO — Terminal A ou B (internacionais).",0,1],
+  ["16h20","Imigração e alfândega. Brasileiros levam de 30 a 50 min.","até 17h10"],
+  ["17h10","Bagagens na esteira e saída do terminal."],
+  ["17h25","Alamo no Level 1 do próprio terminal — 5 a 10 min a pé, sem shuttle.",0,1],
+  ["17h35","Retirada do carro e saída do aeroporto."],
+  ["18h00","Na estrada. Aeroporto até o hotel: cerca de 25 min."],
+  ["18h25","Check-in no Home2 Suites e desfazer as malas."],
+  ["19h00","Walmart Turkey Lake Road (~10 min): mantimentos e essenciais."],
+  ["20h15","Jantar no Camila's — ou o que comprou no mercado, se o cansaço falar mais alto."],
+  ["21h30","Retorno ao hotel."]],
+ warn:"Com o <b>Skip the Counter</b> você vai direto ao veículo. A <b>CNH física</b> é indispensável — sem ela a Alamo não libera o carro.",
+ tip:"Reserve o <b>Visitor Toll Pass</b> pelo app antes de viajar. O hangtag sai numa máquina perto dos balcões de locação, no Level 1 dos Terminais A e B. Recuse o pedágio da Alamo, cadastre a placa no app e devolva o hangtag antes de embarcar. A Flórida é 100% cashless.",
+ mercado:["Água (garrafinhas ou galão)","Sucos e bebidas para o Vicente","Café, açúcar, leite, cápsulas","Pão de forma, manteiga, geleia, frios","Ovos, queijo, presunto","Macarrão instantâneo, minute rice, molho","Barras de cereal, frutas, mix de nuts","Protetor solar, band-aid, Tylenol","Sacolas reutilizáveis","Detergente e esponja"],
+ dine:"Camila's (5458 I-Drive, US$ 15–20 por pessoa, aberto até meia-noite)",
+ go:{name:"Walmart Turkey Lake",q:"8990 Turkey Lake Rd, Orlando, FL 32819"}},
+
+{n:2,date:"12/09",wd:"SÁB",iso:"2026-09-12",kind:"disney",title:"Epcot",
+ tagline:"Sábado é o dia mais cheio da semana. Chegar na abertura muda tudo.",
+ items:[
+  ["07h00","Carrinho de descanso chega ao hotel."],
+  ["08h00","Café no hotel e saída pelo shuttle gratuito ou Uber (~15 min)."],
+  ["09h00","Rope drop: Remy's Ratatouille Adventure e Frozen Ever After.","As filas explodem depois das 10h",1],
+  ["10h00","The Seas with Nemo, Spaceship Earth, Living with the Land."],
+  ["11h00","Test Track — mínimo 40\" / 102 cm."],
+  ["12h30","Almoço: Space 220, Garden Grill, Coral Reef ou Regal Eagle."],
+  ["14h00","World Showcase. Para o Vicente: gincana Remy's Hide & Squeak."],
+  ["16h00","Opcional: piscina no hotel se houver cansaço ou chuva."],
+  ["21h00","Luminous: The Symphony of Us. Chegue 40 a 45 min antes.",0,1],
+  ["22h00","Retorno ao hotel."]],
+ tip:"Sem fura-fila hoje. O guia direciona pelo WhatsApp.",
+ dine:"Camila's · Café Mineiro (6432 I-Drive) · kitchenette",
+ go:{name:"Epcot",q:"Epcot, Orlando FL"}},
+
+{n:3,date:"13/09",wd:"DOM",iso:"2026-09-13",kind:"disney",title:"Outlet e festa de Halloween",
+ tagline:"Manhã de compras, pausa de piscina, festa até meia-noite.",
+ items:[
+  ["09h00","Vineland Premium Outlets (~5 min). Fantasias no Disney Character Warehouse."],
+  ["12h00","Almoço: Gilson's Brazilian. Atenção: mudou para a International Drive, cerca de 15 min do outlet."],
+  ["13h00","Pausa de piscina no hotel.","Essencial — a festa vai até meia-noite",1],
+  ["15h30","Vestir as fantasias e sair para o Magic Kingdom."],
+  ["16h00","Entrada com o ingresso da festa. Aproveite a Fantasyland antes.",0,1],
+  ["19h00","Festa começa: trick-or-treat nas estações de doce."],
+  ["20h15","Parada Mickey's Boo-to-You — 1ª sessão, menos lotada."],
+  ["21h00","Disney's Not-So-Spooky Spectacular. Chegue 40 min antes."],
+  ["22h00","Filas curtíssimas e Hocus Pocus Villain Spelltacular."],
+  ["00h00","Fim da festa. Saia quando o Vicente cansar, sem culpa."]],
+ warn:"Hoje o ingresso é <b>só o da festa</b>, com entrada a partir das 16h. Fantasia é incentivada para todas as idades; proibido cobrir o rosto por inteiro.",
+ tip:"No Guest Services do outlet, apresente o passaporte e peça o <b>International Visitor Coupon Book</b>: 10 a 25% de desconto adicional.",
+ dine:"Comidas da festa no parque · Café Mineiro na volta",
+ go:{name:"Vineland Outlets",q:"8200 Vineland Ave, Orlando, FL 32821"}},
+
+{n:4,date:"14/09",wd:"SEG",iso:"2026-09-14",kind:"disney",title:"Hollywood Studios",
+ tagline:"Muito espaço coberto e shows — bom refúgio nas pancadas da tarde.",
+ items:[
+  ["08h00","Saída para a abertura (~09h). Shuttle ou Uber."],
+  ["09h00","Rope drop: Slinky Dog Dash. Depois Millennium Falcon (38\"/97 cm) e Rise of the Resistance (40\"/102 cm).",0,1],
+  ["11h00","Runaway Railway, Toy Story Mania, Alien Swirling Saucers."],
+  ["12h30","Almoço: Docking Bay 7, Backlot Express ou Woody's Lunch Box."],
+  ["13h30","Shows: Disney Junior Play & Dance, Frozen Sing-Along, Beauty and the Beast."],
+  ["15h00","Pausa opcional na piscina (~25 min do parque)."],
+  ["21h00","Fantasmic! Nesta data costuma ser 20h30 ou 21h — confirme no app. Chegue 45 min antes.",0,1]],
+ tip:"Leve capa de chuva leve. O anfiteatro do Fantasmic! comporta cerca de 6.900 pessoas.",
+ dine:"Camila's · Ana's Brazilian Kitchen · kitchenette",
+ go:{name:"Hollywood Studios",q:"Disney's Hollywood Studios, Orlando FL"}},
+
+{n:5,date:"15/09",wd:"TER",iso:"2026-09-15",kind:"pausa",title:"Apple Store e Disney Springs",
+ tagline:"Café com o Mickey de manhã, troca do iPhone à tarde.",
+ items:[
+  ["08h25","Chef Mickey's no Contemporary Resort (~25 min). Reserve no My Disney Experience.",0,1],
+  ["Manhã","Piscina e academia — piscina aquecida e academia 24h. Descanso depois de 3 dias de parque."],
+  ["11h00","Café tranquilo. Preparar a lista do que precisa comprar."],
+  ["12h00","Almoço perto do hotel."],
+  ["13h30","Apple Store do Florida Mall (~20 min): Trade In do iPhone e do iPad. Reserve 1h30 a 2h.",0,1],
+  ["15h30","Vineland Premium Outlets (~5 min): compras complementares."],
+  ["17h30","Disney Springs (~15 min): LEGO Store, World of Disney, fontes. Entrada gratuita."],
+  ["20h00","Jantar no Disney Springs ou no hotel."]],
+ warn:"Faça a avaliação online do Trade In antes de viajar, agende horário no app da Apple e leve cabo e carregador. A loja fica no <b>Florida Mall</b>, não dentro do Vineland Outlet.",
+ dine:"Disney Springs — Earl of Sandwich, Blaze Pizza · kitchenette",
+ go:{name:"Apple Florida Mall",q:"8001 S Orange Blossom Trl, Orlando, FL 32809"}},
+
+{n:6,date:"16/09",wd:"QUA",iso:"2026-09-16",kind:"disney",title:"Animal Kingdom",
+ tagline:"Animais mais ativos de manhã, no fresco. Chegue cedo.",
+ items:[
+  ["08h00","Saída para a abertura (~09h)."],
+  ["09h00","Rope drop: Na'vi River Journey e, se medir 44\"/112 cm, Flight of Passage. Depois Kilimanjaro Safaris.",0,1],
+  ["11h00","Gorilla Falls, Maharajah Jungle Trek. DinoLand: TriceraTop Spin e The Boneyard."],
+  ["12h30","Almoço: Satu'li Canteen, Flame Tree ou Yak & Yeti."],
+  ["13h30","Festival of the Lion King — chegue 30 min antes. Depois Finding Nemo."],
+  ["16h00","O parque fecha cedo, entre 17h e 18h. Retorno ao hotel."],
+  ["17h00","Piscina e academia."],
+  ["19h00","Noite tranquila — amanhã é o dia mais longo."]],
+ tip:"Calor forte de setembro: protetor solar, chapéu, muita água e capa de chuva.",
+ dine:"Gilson's Brazilian · kitchenette",
+ go:{name:"Animal Kingdom",q:"Disney's Animal Kingdom, Orlando FL"}},
+
+{n:7,date:"17/09",wd:"QUI",iso:"2026-09-17",kind:"disney",title:"Magic Kingdom, dia inteiro",
+ tagline:"O dia mais longo, com fura-fila. A pausa do meio-dia é o segredo.",
+ items:[
+  ["08h00","Saída para a abertura (~09h)."],
+  ["09h00","Rope drop: Seven Dwarfs Mine Train (38\"/97 cm) — use o fura-fila aqui. Depois Peter Pan's Flight.",0,1],
+  ["10h00","Fantasyland: small world, Winnie the Pooh, Dumbo, Carrossel, Mad Tea Party."],
+  ["12h00","Pausa no hotel (~25 min): almoço, descanso e 1h de piscina.","Não pule esta pausa",1],
+  ["14h30","Almoço tranquilo. Kitchenette ou lanche rápido perto do hotel."],
+  ["16h00","Volta ao MK. Tomorrowland: Buzz, Speedway (32\"/82 cm), PeopleMover, Astro Orbiter."],
+  ["17h00","Adventureland e Frontierland: Pirates, Jungle Cruise, Haunted Mansion, Big Thunder (40\"/102 cm)."],
+  ["18h30","Mini pausa com ar-condicionado: Carousel of Progress ou Hall of Presidents."],
+  ["19h30","Jantar no parque: Be Our Guest (reserve) ou Pinocchio Village Haus."],
+  ["21h00","Happily Ever After. Chegue 40 min antes — o Hub tem a melhor visão, a Main Street tem mais espaço.",0,1],
+  ["21h30","Saída."]],
+ dine:"No parque · deixe algo fácil na geladeira",
+ go:{name:"Magic Kingdom",q:"Magic Kingdom, Lake Buena Vista FL"}},
+
+{n:8,date:"18/09",wd:"SEX",iso:"2026-09-18",kind:"pausa",title:"Gatorland e ICON Park",
+ tagline:"Dia de recarregar depois de quatro dias de parque.",
+ items:[
+  ["Manhã","Piscina e academia. Café sem pressa."],
+  ["10h00","Gatorland (~15 min): jacarés, tirolesa a partir dos 6 anos e área de água.","Se chover: Crayola Experience no Florida Mall"],
+  ["13h00","Almoço: Gilson's Brazilian ou kitchenette."],
+  ["15h30","ICON Park (~5 min, entrada gratuita): The Wheel, SEA LIFE, Pearl Express Train.","Estacionamento gratuito a partir do 4º andar",1],
+  ["17h30","Vineland Outlets — 3 min a pé do ICON Park."],
+  ["19h30","Jantar na International Drive."]],
+ tip:"The Wheel no pôr do sol somado ao SEA LIFE dá um programa completo para o Vicente, sem fila.",
+ dine:"Café Mineiro · Camila's",
+ go:{name:"ICON Park",q:"ICON Park, 8375 International Dr, Orlando, FL 32819"}},
+
+{n:9,date:"19/09",wd:"SÁB",iso:"2026-09-19",kind:"universal",title:"Universal Studios Florida",
+ tagline:"Minions de manhã, Diagon Alley à tarde.",
+ items:[
+  ["08h00","Saída para a abertura (~09h). Confirme se o shuttle cobre a Universal; senão, Uber (~20 min)."],
+  ["09h00","Rope drop: Minion Land — Villain-Con Minion Blaster e Despicable Me Minion Mayhem.",0,1],
+  ["10h30","DreamWorks Land: Kung Fu Panda e Shrek. E.T. Adventure e Animal Actors."],
+  ["12h30","Almoço: Mel's Drive-In ou Springfield (Krusty Burger, Luigi's Pizza)."],
+  ["14h00","Diagon Alley: Ollivanders e lojas. Escape from Gringotts (42\"/107 cm). Compre a varinha interativa.",0,1],
+  ["15h30","Pausa opcional — tarde sujeita a chuva."],
+  ["19h30","CityWalk: Vivo Italian Kitchen, Toothsome Chocolate Emporium, Antojitos."]],
+ tip:"O Hogwarts Express liga os dois parques, mas exige ingresso park-to-park.",
+ dine:"CityWalk Universal · kitchenette",
+ go:{name:"Universal Studios",q:"Universal Studios Florida, 6000 Universal Blvd, Orlando FL"}},
+
+{n:10,date:"20/09",wd:"DOM",iso:"2026-09-20",kind:"universal",title:"Islands of Adventure",
+ tagline:"Dia molhado. Leve toalha e roupa extra para o Vicente.",
+ items:[
+  ["08h00","Saída para a abertura (~09h)."],
+  ["09h00","Seuss Landing primeiro: Cat in the Hat, One Fish Two Fish, Caro-Seuss-el, Trolley.",0,1],
+  ["10h30","Hogsmeade: Butterbeer, Flight of the Hippogriff (36\"/92 cm), Ollivanders.",0,1],
+  ["12h00","Almoço: Three Broomsticks. Reserve no app. Butterbeer de sobremesa."],
+  ["13h30","Jurassic Park: Camp Jurassic e Pteranodon Flyers (36\"/92 cm). Toon Lagoon molha."],
+  ["15h30","Área Marvel: atrações intensas. Foque no que o Vicente curte."],
+  ["17h00","Retorno ao hotel."]],
+ tip:"VelociCoaster e Hagrid's são para adultos. O dia rende em Seuss Landing e Hogsmeade.",
+ dine:"Gilson's Brazilian · kitchenette",
+ go:{name:"Islands of Adventure",q:"Islands of Adventure, Orlando FL"}},
+
+{n:11,date:"21/09",wd:"SEG",iso:"2026-09-21",kind:"pausa",title:"Compras finais",
+ tagline:"Manhã sem pressa, tarde de outlet.",
+ items:[
+  ["Manhã","Piscina e academia. Manhã sem pressa."],
+  ["11h00","Café e planejamento das últimas compras."],
+  ["12h30","Almoço perto do hotel."],
+  ["14h00","Vineland ou International Premium Outlets (300+ lojas). Também Ross e Burlington, a ~10 min."],
+  ["17h30","Disney Springs, opcional: LEGO Store e World of Disney."],
+  ["19h30","Jantar na International Drive."],
+  ["21h00","Dormir cedo — amanhã é Epic Universe."]],
+ tip:"Ross Dress for Less e Burlington são os outlets escondidos de Orlando: 40 a 70% off.",
+ dine:"Camila's · Café Mineiro · kitchenette",
+ go:{name:"International Outlets",q:"4951 International Dr, Orlando, FL 32819"}},
+
+{n:12,date:"22/09",wd:"TER",iso:"2026-09-22",kind:"universal",title:"Epic Universe",
+ tagline:"Parque novo, com fura-fila. Foque em Nintendo World e Isle of Berk.",
+ items:[
+  ["08h00","Saída cedo para a abertura (~09h). Entrada pela Celestial Park."],
+  ["09h00","Super Nintendo World com fura-fila: Mario Kart (40\"/102 cm), Mine-Cart Madness (36\"/92 cm), Yoshi's Adventure (34\"/87 cm). Compre a Power-Up Band.",0,1],
+  ["11h30","Isle of Berk: playground, Fyre Drill Coaster (48\"), Dragon Racer's Rally, Hiccup's Wing Gliders."],
+  ["13h00","Almoço: Toadstool Cafe (reserve no app) ou Cosmic Cafe."],
+  ["14h00","Fila virtual pelo app: Battle at the Ministry (40\"/102 cm). Dark Universe é mais para adultos."],
+  ["16h00","Pausa e ritmo leve — tarde sujeita a chuva."],
+  ["17h30","Celestial Park: Constellation Carousel e área de água Astronomica ao entardecer."],
+  ["19h00","Saída. CityWalk ou direto ao hotel."]],
+ tip:"Use os últimos mantimentos no jantar — amanhã as malas fecham.",
+ dine:"CityWalk Universal · kitchenette",
+ go:{name:"Epic Universe",q:"1001 Epic Blvd, Orlando, FL 32819"}},
+
+{n:13,date:"23/09",wd:"QUA",iso:"2026-09-23",kind:"logistica",title:"Retorno, voo às 22h15",
+ tagline:"Dia inteiro disponível. Esteja no MCO às 19h.",
+ items:[
+  ["Manhã","Piscina e academia pela última vez. Café tranquilo."],
+  ["10h00","Packing e organização das malas."],
+  ["12h00","Almoço: último brasileiro em Orlando, Camila's ou Café Mineiro."],
+  ["14h00","Últimas compras: Vineland (~5 min), Disney Springs ou Walmart Turkey Lake."],
+  ["17h00","Retorno ao hotel. Finalizar malas e check-out — deixe as malas na recepção.",0,1],
+  ["18h15","Saída para o MCO. Devolução do Alamo ~15 min antes do terminal.",0,1],
+  ["19h00","No aeroporto: check-in, imigração e segurança."],
+  ["22h15","Voo de volta.",0,1]],
+ warn:"Abasteça o tanque antes de entrar no aeroporto, nos postos da saída da I-4. Combustível cobrado no guichê da Alamo sai bem mais caro.",
+ tip:"Limite alfandegário de US$ 1.000 por pessoa em bens. O check-out oficial do hotel é às 11h — combine na recepção para guardar as malas até a tarde.",
+ dine:"Camila's · Café Mineiro",
+ go:{name:"Aeroporto MCO",q:"Orlando International Airport, Orlando FL"}}
+];
+
+const RES=[
+ {t:"Alamo",s:"Retirada 11/09 no MCO · devolução 23/09",ic:"🚗",bg:"#EAF0FF",
+  codes:[["Reserva Alamo","alamo"]],
+  info:"Balcão no Level 1 dos Terminais A e B (Level 4 no Terminal C). Os carros ficam no térreo do estacionamento, a pé. Com o Skip the Counter, vá direto ao veículo.",
+  links:[["Abrir Alamo","https://www.alamo.com/"],["Ligar MCO","tel:+18443703164"]]},
+ {t:"LATAM",s:"Ida 11/09, pouso 16h20 · volta 23/09, voo 22h15",ic:"✈️",bg:"#FFEFE6",
+  codes:[["Localizador LATAM","latam"]],
+  info:"Check-in abre 48h antes pelo app. Orlando está 1h atrás de São Paulo em setembro.",
+  links:[["Abrir LATAM","https://www.latamairlines.com/br/pt"],["Brasil 0300","tel:03005705700"],["Do exterior","tel:+551128204816"]]},
+ {t:"Home2 Suites by Hilton",s:"12107 Regency Village Dr, I-Drive South",ic:"🏨",bg:"#E9F7F4",
+  codes:[["Reserva Booking","booking"]],
+  info:"Check-in 16h, check-out 11h. Café grátis de segunda a sexta das 6h às 9h, sábado e domingo das 6h às 10h. Piscina aquecida, academia 24h, shuttle gratuito para a Disney. Estacionamento US$ 10,65 por dia.",
+  links:[["Ligar no hotel","tel:+14079441705"],["Booking","https://www.booking.com/"],["Waze até o hotel","waze"]]},
+ {t:"Ingressos",s:"Já vinculados aos apps",ic:"🎟️",bg:"#F3EDFF",
+  codes:[],
+  info:"Disney: reservas de restaurante até 60 dias antes e Lightning Lane no próprio dia. Universal: o mesmo app serve para o Epic Universe e para as filas virtuais.",
+  links:[["My Disney Experience","https://disneyworld.disney.go.com/"],["Universal Orlando","https://www.universalorlando.com/"]]},
+ {t:"Visitor Toll Pass",s:"Retirar no MCO em 11/09",ic:"🛣️",bg:"#FFF6E3",
+  codes:[],
+  info:"Gratuito, cobra só a tarifa base. Reserve pelo app antes da viagem, retire o hangtag na máquina do Level 1 (Terminais A e B), cadastre a placa e pendure no retrovisor. Devolva antes de embarcar: sem devolução, cobram US$ 10. A alternativa da Alamo custa de US$ 3,95 a 5,35 por dia mais os pedágios.",
+  links:[["Abrir Visitor Toll Pass","https://visitortollpass.com/"]]},
+ {t:"Emergências",s:"Salve os números antes de embarcar",ic:"🆘",bg:"#FFEBEE",
+  codes:[],
+  info:"Consulado-Geral do Brasil em Orlando, 355 N Orange Ave. O plantão atende por WhatsApp apenas casos comprovados de emergência.",
+  links:[["911","tel:911"],["Consulado","tel:+14076750604"],["Plantão consular","tel:+13213879716"],["Hotel","tel:+14079441705"],["Alamo","tel:+18443703164"]]}
+];
+
+const LUG=[
+ ["BASE",[["Home2 Suites by Hilton","12107 Regency Village Dr, Orlando, FL 32821"],["Aeroporto MCO","Orlando International Airport, Orlando FL"]]],
+ ["PARQUES E PASSEIOS",[["Magic Kingdom","Walt Disney World, Bay Lake, FL 32836","Magic Kingdom Park"],["Epcot","Walt Disney World, Bay Lake, FL 32821","Epcot Walt Disney World"],["Hollywood Studios","Walt Disney World, Bay Lake, FL 34747","Disney's Hollywood Studios"],["Animal Kingdom","Walt Disney World, Bay Lake, FL 34747","Disney's Animal Kingdom Theme Park"],["Universal Studios","6000 Universal Blvd, Orlando, FL 32819","Universal Studios Florida"],["Islands of Adventure","6000 Universal Blvd, Orlando, FL 32819","Universal Islands of Adventure"],["Epic Universe","1001 Epic Blvd, Orlando, FL 32819"],["Disney Springs","1486 Buena Vista Dr, Lake Buena Vista, FL 32830"],["Chef Mickey's","Contemporary Resort, 4600 World Dr, Lake Buena Vista, FL 32830"],["Gatorland","14501 S Orange Blossom Trl, Orlando, FL 32837"],["ICON Park","8375 International Dr, Orlando, FL 32819"]]],
+ ["COMPRAS",[["Vineland Premium Outlets","8200 Vineland Ave, Orlando, FL 32821"],["International Premium Outlets","4951 International Dr, Orlando, FL 32819"],["Apple Store Florida Mall","8001 S Orange Blossom Trl, Orlando, FL 32809"],["Walmart Turkey Lake Road","8990 Turkey Lake Rd, Orlando, FL 32819"]]],
+ ["COMIDA",[["Camila's Restaurant","5458 International Dr, Orlando, FL 32819"],["Café Mineiro","6432 International Dr, Orlando, FL 32819"],["Gilson's Brazilian","5250 International Dr, Orlando, FL 32819"],["Ana's Brazilian Kitchen","8865 Commodity Cir, Ste 5, Orlando, FL 32819"]]]
+];
+
+const CHECK=[
+ ["ANTES DE VIAJAR",["Check-in antecipado da Alamo (Skip the Counter)","Reservas de restaurante no My Disney Experience","Agendar horário na Apple Store e avaliar o Trade In online","Total Pass (chip de celular), comprar em Guarulhos","Avisar Itaú e Nomad sobre a viagem","Comprar US$ 150 a 200 em espécie para gorjetas","Backup do celular na nuvem e espaço livre para fotos","Baixar filmes offline e separar o iPad para o voo","Receita do Vicente traduzida, se houver medicamento controlado"]],
+ ["DOCUMENTOS E REMÉDIOS",["Passaportes de todos","Visto ou ESTA válido","CNH física, indispensável na Alamo","Comprovante do seguro viagem","Dipirona na bagagem de mão, em quantidade pessoal","Antialérgico, antidiarreico, protetor solar, repelente"]],
+ ["NA MALA",["Roupa de piscina para todos","Protetor solar FPS 50+","Capa de chuva leve ou poncho","Sandálias de piscina e tênis confortável","Óculos de sol e bolsa leve de parque","Powerbank","Ventilador de mão portátil","Garrafa térmica"]],
+ ["CHEGANDO",["Ativar o Visitor Toll Pass no MCO","Confirmar horários do shuttle na recepção","Pegar o Coupon Book no Guest Services do outlet"]]
+];
+
+/* ===== helpers ===== */
+const waze=q=>'https://waze.com/ul?q='+encodeURIComponent(q)+'&navigate=yes';
+const maps=q=>'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);
+const esc=s=>s.replace(/[<>&]/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]));
+const PIN='<svg viewBox="0 0 24 24"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>';
+
+/* ===== nav ===== */
+const tabs=[...document.querySelectorAll('nav button')];
+tabs.forEach(b=>b.addEventListener('click',()=>{
+  tabs.forEach(x=>x.setAttribute('aria-selected',String(x===b)));
+  document.querySelectorAll('.panel').forEach(p=>p.hidden=(p.id!=='p-'+b.dataset.tab));
+  window.scrollTo({top:0});
+}));
+
+/* ===== hoje ===== */
+const todayISO=new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+const idxToday=DAYS.findIndex(d=>d.iso===todayISO);
+(function(){
+  const diff=Math.ceil((new Date('2026-09-11T00:00:00-04:00')-new Date())/86400000);
+  const n=document.getElementById('cdNum'),t=document.getElementById('cdTxt');
+  if(idxToday>=0){n.textContent=DAYS[idxToday].n;t.textContent='Dia da viagem · '+DAYS[idxToday].title}
+  else if(diff>0){n.textContent=diff;t.textContent=diff===1?'dia para embarcar':'dias para embarcar'}
+  else{n.textContent='✓';t.textContent='viagem concluída'}
+})();
+
+/* ===== roteiro ===== */
+let sel=idxToday>=0?idxToday:0;
+const strip=document.getElementById('strip'),dayBox=document.getElementById('dayBox');
+function renderStrip(){
+  strip.innerHTML=DAYS.map((d,i)=>`<button class="pill${d.iso===todayISO?' today':''}" aria-pressed="${i===sel}" data-i="${i}">
+    <div class="wd">${d.wd}</div><div class="dn">${d.date.slice(0,2)}</div><div class="dot" style="background:${C[d.kind]}"></div></button>`).join('');
+  strip.querySelectorAll('.pill').forEach(p=>p.addEventListener('click',()=>{sel=+p.dataset.i;renderStrip();renderDay()}));
+  const a=strip.querySelector('[aria-pressed="true"]');if(a)a.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});
+}
+async function renderDay(){
+  const d=DAYS[sel],col=C[d.kind];
+  dayBox.innerHTML=`<article class="day">
+    <div class="top" style="background:linear-gradient(140deg,${col} 0%,${col}D9 100%)">
+      <span class="kind">${KIND[d.kind]} · DIA ${d.n}</span>
+      <h2>${d.title}</h2><p>${d.tagline}</p>
+    </div>
+    <ul class="tl">${d.items.map(([t,x,sub,key])=>`<li class="${key?'key':''}">
+      <div class="t">${t}</div><div class="rail"><i></i><b></b></div>
+      <div class="x">${x}${sub?`<em>${sub}</em>`:''}</div></li>`).join('')}</ul>
+    ${d.warn?`<div class="callout warn">${d.warn}</div>`:''}
+    ${d.tip?`<div class="callout tip">${d.tip}</div>`:''}
+    ${d.mercado?`<details class="mk"><summary>Lista do mercado</summary><ul>${d.mercado.map(i=>`<li>${i}</li>`).join('')}</ul></details>`:''}
+    ${d.dine?`<p class="dine"><b>Jantar:</b> ${d.dine}</p>`:''}
+    <div class="acts">
+      <a class="go prime" href="${waze(d.go.q)}" target="_blank" rel="noopener">${PIN}${d.go.name}</a>
+      <a class="go" href="${waze(HOTEL)}" target="_blank" rel="noopener">Voltar ao hotel</a>
+      ${d.kind==='disney'?`<a class="go" href="https://disneyworld.disney.go.com/" target="_blank" rel="noopener">Disney</a>`:''}
+      ${d.kind==='universal'?`<a class="go" href="https://www.universalorlando.com/" target="_blank" rel="noopener">Universal</a>`:''}
+    </div>
+    <div class="notewrap"><label for="nt">Anotações do dia</label>
+      <textarea id="nt" placeholder="Onde estacionou, o que ficou pendente, o que valeu a pena…"></textarea></div>
+  </article>`;
+  const ta=document.getElementById('nt');
+  ta.value=(await store.get('orl:note:'+d.iso))||'';
+  let tm;ta.addEventListener('input',()=>{clearTimeout(tm);tm=setTimeout(()=>store.set('orl:note:'+d.iso,ta.value),400)});
+}
+
+/* ===== reservas ===== */
+document.getElementById('p-reservas').innerHTML=`<div class="sect">RESERVAS E CONTATOS</div>`+RES.map(r=>`
+  <div class="box">
+    <div class="boxhead"><div class="ico" style="background:${r.bg}">${r.ic}</div>
+      <div><h3>${r.t}</h3><div class="sub">${r.s}</div></div></div>
+    ${r.codes.map(([k,id])=>`<div class="kv"><div style="flex:1"><div class="k">${k}</div><input class="cv" data-id="${id}" placeholder="toque e preencha" autocomplete="off" spellcheck="false"></div><button data-copyid="${id}">copiar</button></div>`).join('')}
+    <p class="desc">${r.info}</p>
+    <div class="links">${r.links.map(([n,u])=>`<a class="go" href="${u==='waze'?waze(HOTEL):u}" target="_blank" rel="noopener">${n}</a>`).join('')}</div>
+  </div>`).join('');
+document.querySelectorAll('.cv').forEach(inp=>{
+  const k='orl:code:'+inp.dataset.id;
+  store.get(k).then(v=>{if(v)inp.value=v});
+  let tm;inp.addEventListener('input',()=>{clearTimeout(tm);tm=setTimeout(()=>store.set(k,inp.value.trim()),400)});
+});
+document.getElementById('p-reservas').addEventListener('click',e=>{
+  const b=e.target.closest('[data-copyid]');if(!b)return;
+  const inp=document.querySelector('.cv[data-id="'+b.dataset.copyid+'"]');
+  if(!inp||!inp.value.trim()){inp&&inp.focus();return}
+  navigator.clipboard?.writeText(inp.value.trim());
+  const o=b.textContent;b.textContent='copiado ✓';setTimeout(()=>b.textContent=o,1300);
+});
+
+/* ===== lugares ===== */
+document.getElementById('p-lugares').innerHTML=LUG.map(([g,l])=>`<div class="sect">${g}</div>
+  <div class="box" style="padding-top:6px;padding-bottom:6px">${l.map(([n,a,q])=>`
+    <div class="row"><div><div class="n">${n}</div><div class="a">${a}</div></div>
+    <div class="rowgo"><a class="circ w" href="${waze(q||a)}" target="_blank" rel="noopener" aria-label="Waze até ${n}">W</a>
+    <a class="circ m" href="${maps(q||a)}" target="_blank" rel="noopener" aria-label="Maps de ${n}">M</a></div></div>`).join('')}</div>`).join('');
+
+/* ===== dólar ===== */
+const usd=document.getElementById('usd'),brl=document.getElementById('brl'),rate=document.getElementById('rate');
+const fmt=(v,c)=>c+' '+v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+let R=5.45;
+store.get('orl:rate').then(v=>{R=v||5.45;rate.value=R;fromUsd()});
+function fromUsd(){brl.value=((+usd.value||0)*R).toFixed(2)}
+function fromBrl(){usd.value=((+brl.value||0)/R).toFixed(2)}
+usd.addEventListener('input',fromUsd);brl.addEventListener('input',fromBrl);
+rate.addEventListener('input',()=>{R=+rate.value||5.45;store.set('orl:rate',R);fromUsd();renderExp()});
+document.getElementById('quick').innerHTML=[5,10,20,50,100,200].map(v=>`<button data-q="${v}">US$ ${v}</button>`).join('');
+document.getElementById('quick').addEventListener('click',e=>{const b=e.target.closest('[data-q]');if(!b)return;usd.value=b.dataset.q;fromUsd()});
+let EXP=[];
+store.get('orl:exp').then(v=>{EXP=v||[];renderExp()});
+function renderExp(){
+  document.getElementById('eList').innerHTML=EXP.map((e,i)=>`<li><span>${esc(e.d)}</span><span>US$ ${e.v.toFixed(2)} <button class="del" data-d="${i}" aria-label="remover">×</button></span></li>`).join('')||'<li style="border:0;color:#A6AEC6">Nada lançado ainda.</li>';
+  const t=EXP.reduce((s,e)=>s+e.v,0);
+  document.getElementById('eTot').textContent=fmt(t,'US$');
+  document.getElementById('eTotBrl').textContent=fmt(t*R,'R$');
+}
+document.getElementById('eAdd').addEventListener('click',()=>{
+  const d=document.getElementById('eDesc'),v=document.getElementById('eVal');
+  if(!d.value.trim()||!+v.value)return;
+  EXP.push({d:d.value.trim(),v:+v.value});store.set('orl:exp',EXP);d.value='';v.value='';renderExp();
+});
+document.getElementById('eList').addEventListener('click',e=>{
+  const b=e.target.closest('[data-d]');if(!b)return;
+  EXP.splice(+b.dataset.d,1);store.set('orl:exp',EXP);renderExp();
+});
+
+/* ===== prep ===== */
+const prep=document.getElementById('p-prep');
+const TICK='<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></svg>';
+prep.innerHTML=CHECK.map(([g,items],gi)=>`<div class="sect">${g}</div>
+  <div class="box"><div class="progn" id="pn${gi}"></div><div class="prog"><i id="pb${gi}" style="width:0"></i></div>
+  ${items.map((it,ii)=>`<label class="chk" data-k="${gi}-${ii}" data-g="${gi}"><input type="checkbox"><span class="bx">${TICK}</span><span>${it}</span></label>`).join('')}</div>`).join('');
+store.get('orl:chk').then(saved=>{
+  const S=saved||{};
+  const upd=gi=>{
+    const all=[...prep.querySelectorAll(`.chk[data-g="${gi}"]`)];
+    const n=all.filter(l=>l.classList.contains('done')).length;
+    document.getElementById('pb'+gi).style.width=(n/all.length*100)+'%';
+    document.getElementById('pn'+gi).textContent=n+' de '+all.length+' concluídos';
+  };
+  prep.querySelectorAll('.chk').forEach(l=>{
+    const k=l.dataset.k,box=l.querySelector('input');
+    box.checked=!!S[k];l.classList.toggle('done',box.checked);
+    box.addEventListener('change',()=>{S[k]=box.checked;l.classList.toggle('done',box.checked);store.set('orl:chk',S);upd(l.dataset.g)});
+  });
+  CHECK.forEach((_,gi)=>upd(gi));
+});
+
+renderStrip();renderDay();
+</script>
+</body>
+</html>
