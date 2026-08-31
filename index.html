@@ -353,7 +353,7 @@ const store={
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
 
 /* ===== dados ===== */
-const HOTEL="Home2 Suites by Hilton, 12107 Regency Village Dr, Orlando, FL 32821";
+const HOTEL="28.3896527,-81.4867030";
 const C={disney:"#6C4BD6",universal:"#0FA396",pausa:"#F0961E",logistica:"#2E6BE6"};
 const KIND={disney:"DISNEY",universal:"UNIVERSAL",pausa:"DIA DE PAUSA",logistica:"LOGÍSTICA"};
 
@@ -375,7 +375,7 @@ const DAYS=[
  tip:"Reserve o <b>Visitor Toll Pass</b> pelo app antes de viajar. O hangtag sai numa máquina perto dos balcões de locação, no Level 1 dos Terminais A e B. Recuse o pedágio da Alamo, cadastre a placa no app e devolva o hangtag antes de embarcar. A Flórida é 100% cashless.",
  mercado:["Água (garrafinhas ou galão)","Sucos e bebidas para o Vicente","Café, açúcar, leite, cápsulas","Pão de forma, manteiga, geleia, frios","Ovos, queijo, presunto","Macarrão instantâneo, minute rice, molho","Barras de cereal, frutas, mix de nuts","Protetor solar, band-aid, Tylenol","Sacolas reutilizáveis","Detergente e esponja"],
  dine:"Camila's (5458 I-Drive, US$ 15–20 por pessoa, aberto até meia-noite)",
- go:{name:"Walmart Turkey Lake",q:"8990 Turkey Lake Rd, Orlando, FL 32819"}},
+ go:{name:"Walmart Turkey Lake",q:"28.4399415,-81.4764715"}},
 
 {n:2,date:"12/09",wd:"SÁB",iso:"2026-09-12",kind:"disney",title:"Epcot",
  tagline:"Sábado é o dia mais cheio da semana. Chegar na abertura muda tudo.",
@@ -392,7 +392,7 @@ const DAYS=[
   ["22h00","Retorno ao hotel."]],
  tip:"Sem fura-fila hoje. O guia direciona pelo WhatsApp.",
  dine:"Camila's · Café Mineiro (6432 I-Drive) · kitchenette",
- go:{name:"Epcot",q:"Epcot, Orlando FL"}},
+ go:{name:"Epcot",q:"28.3807890,-81.5557880"}},
 
 {n:3,date:"13/09",wd:"DOM",iso:"2026-09-13",kind:"disney",title:"Outlet e festa de Halloween",
  tagline:"Manhã de compras, pausa de piscina, festa até meia-noite.",
@@ -410,7 +410,7 @@ const DAYS=[
  warn:"Hoje o ingresso é <b>só o da festa</b>, com entrada a partir das 16h. Fantasia é incentivada para todas as idades; proibido cobrir o rosto por inteiro.",
  tip:"No Guest Services do outlet, apresente o passaporte e peça o <b>International Visitor Coupon Book</b>: 10 a 25% de desconto adicional.",
  dine:"Comidas da festa no parque · Café Mineiro na volta",
- go:{name:"Vineland Outlets",q:"8200 Vineland Ave, Orlando, FL 32821"}},
+ go:{name:"Vineland Outlets",q:"28.3871744,-81.4923639"}},
 
 {n:4,date:"14/09",wd:"SEG",iso:"2026-09-14",kind:"disney",title:"Hollywood Studios",
  tagline:"Muito espaço coberto e shows — bom refúgio nas pancadas da tarde.",
@@ -424,7 +424,7 @@ const DAYS=[
   ["21h00","Fantasmic! Nesta data costuma ser 20h30 ou 21h — confirme no app. Chegue 45 min antes.",0,1]],
  tip:"Leve capa de chuva leve. O anfiteatro do Fantasmic! comporta cerca de 6.900 pessoas.",
  dine:"Camila's · Ana's Brazilian Kitchen · kitchenette",
- go:{name:"Hollywood Studios",q:"Disney's Hollywood Studios, Orlando FL"}},
+ go:{name:"Hollywood Studios",q:"28.3573368,-81.5512940"}},
 
 {n:5,date:"15/09",wd:"TER",iso:"2026-09-15",kind:"pausa",title:"Apple Store e Disney Springs",
  tagline:"Café com o Mickey de manhã, troca do iPhone à tarde.",
@@ -439,7 +439,7 @@ const DAYS=[
   ["20h00","Jantar no Disney Springs ou no hotel."]],
  warn:"Faça a avaliação online do Trade In antes de viajar, agende horário no app da Apple e leve cabo e carregador. A loja fica no <b>Florida Mall</b>, não dentro do Vineland Outlet.",
  dine:"Disney Springs — Earl of Sandwich, Blaze Pizza · kitchenette",
- go:{name:"Apple Florida Mall",q:"8001 S Orange Blossom Trl, Orlando, FL 32809"}},
+ go:{name:"Apple Florida Mall",q:"28.4452562,-81.3940167"}},
 
 {n:6,date:"16/09",wd:"QUA",iso:"2026-09-16",kind:"disney",title:"Animal Kingdom",
  tagline:"Animais mais ativos de manhã, no fresco. Chegue cedo.",
@@ -454,7 +454,7 @@ const DAYS=[
   ["19h00","Noite tranquila — amanhã é o dia mais longo."]],
  tip:"Calor forte de setembro: protetor solar, chapéu, muita água e capa de chuva.",
  dine:"Gilson's Brazilian · kitchenette",
- go:{name:"Animal Kingdom",q:"Disney's Animal Kingdom, Orlando FL"}},
+ go:{name:"Animal Kingdom",q:"28.3530590,-81.5911770"}},
 
 {n:7,date:"17/09",wd:"QUI",iso:"2026-09-17",kind:"disney",title:"Magic Kingdom, dia inteiro",
  tagline:"O dia mais longo, com fura-fila. A pausa do meio-dia é o segredo.",
@@ -471,7 +471,7 @@ const DAYS=[
   ["21h00","Happily Ever After. Chegue 40 min antes — o Hub tem a melhor visão, a Main Street tem mais espaço.",0,1],
   ["21h30","Saída."]],
  dine:"No parque · deixe algo fácil na geladeira",
- go:{name:"Magic Kingdom",q:"Magic Kingdom, Lake Buena Vista FL"}},
+ go:{name:"Magic Kingdom",q:"28.4048644,-81.5801643"}},
 
 {n:8,date:"18/09",wd:"SEX",iso:"2026-09-18",kind:"pausa",title:"Gatorland e ICON Park",
  tagline:"Dia de recarregar depois de quatro dias de parque.",
@@ -484,7 +484,7 @@ const DAYS=[
   ["19h30","Jantar na International Drive."]],
  tip:"The Wheel no pôr do sol somado ao SEA LIFE dá um programa completo para o Vicente, sem fila.",
  dine:"Café Mineiro · Camila's",
- go:{name:"ICON Park",q:"ICON Park, 8375 International Dr, Orlando, FL 32819"}},
+ go:{name:"ICON Park",q:"28.4432375,-81.4692907"}},
 
 {n:9,date:"19/09",wd:"SÁB",iso:"2026-09-19",kind:"universal",title:"Universal Studios Florida",
  tagline:"Minions de manhã, Diagon Alley à tarde.",
@@ -498,7 +498,7 @@ const DAYS=[
   ["19h30","CityWalk: Vivo Italian Kitchen, Toothsome Chocolate Emporium, Antojitos."]],
  tip:"O Hogwarts Express liga os dois parques, mas exige ingresso park-to-park.",
  dine:"CityWalk Universal · kitchenette",
- go:{name:"Universal Studios",q:"Universal Studios Florida, 6000 Universal Blvd, Orlando FL"}},
+ go:{name:"Universal Studios",q:"28.4739273,-81.4612826"}},
 
 {n:10,date:"20/09",wd:"DOM",iso:"2026-09-20",kind:"universal",title:"Islands of Adventure",
  tagline:"Dia molhado. Leve toalha e roupa extra para o Vicente.",
@@ -512,7 +512,7 @@ const DAYS=[
   ["17h00","Retorno ao hotel."]],
  tip:"VelociCoaster e Hagrid's são para adultos. O dia rende em Seuss Landing e Hogsmeade.",
  dine:"Gilson's Brazilian · kitchenette",
- go:{name:"Islands of Adventure",q:"Islands of Adventure, Orlando FL"}},
+ go:{name:"Islands of Adventure",q:"28.4739273,-81.4612826"}},
 
 {n:11,date:"21/09",wd:"SEG",iso:"2026-09-21",kind:"pausa",title:"Compras finais",
  tagline:"Manhã sem pressa, tarde de outlet.",
@@ -526,7 +526,7 @@ const DAYS=[
   ["21h00","Dormir cedo — amanhã é Epic Universe."]],
  tip:"Ross Dress for Less e Burlington são os outlets escondidos de Orlando: 40 a 70% off.",
  dine:"Camila's · Café Mineiro · kitchenette",
- go:{name:"International Outlets",q:"4951 International Dr, Orlando, FL 32819"}},
+ go:{name:"International Outlets",q:"28.4746714,-81.4515288"}},
 
 {n:12,date:"22/09",wd:"TER",iso:"2026-09-22",kind:"universal",title:"Epic Universe",
  tagline:"Parque novo, com fura-fila. Foque em Nintendo World e Isle of Berk.",
@@ -541,7 +541,7 @@ const DAYS=[
   ["19h00","Saída. CityWalk ou direto ao hotel."]],
  tip:"Use os últimos mantimentos no jantar — amanhã as malas fecham.",
  dine:"CityWalk Universal · kitchenette",
- go:{name:"Epic Universe",q:"1001 Epic Blvd, Orlando, FL 32819"}},
+ go:{name:"Epic Universe",q:"28.4376808,-81.4444238"}},
 
 {n:13,date:"23/09",wd:"QUA",iso:"2026-09-23",kind:"logistica",title:"Retorno, voo às 22h15",
  tagline:"Dia inteiro disponível. Esteja no MCO às 19h.",
@@ -557,7 +557,7 @@ const DAYS=[
  warn:"Abasteça o tanque antes de entrar no aeroporto, nos postos da saída da I-4. Combustível cobrado no guichê da Alamo sai bem mais caro.",
  tip:"Limite alfandegário de US$ 1.000 por pessoa em bens. O check-out oficial do hotel é às 11h — combine na recepção para guardar as malas até a tarde.",
  dine:"Camila's · Café Mineiro",
- go:{name:"Aeroporto MCO",q:"Orlando International Airport, Orlando FL"}}
+ go:{name:"Aeroporto MCO",q:"28.4321340,-81.3084045"}}
 ];
 
 const RES=[
@@ -588,10 +588,10 @@ const RES=[
 ];
 
 const LUG=[
- ["BASE",[["Home2 Suites by Hilton","12107 Regency Village Dr, Orlando, FL 32821"],["Aeroporto MCO","Orlando International Airport, Orlando FL"]]],
- ["PARQUES E PASSEIOS",[["Magic Kingdom","Walt Disney World, Bay Lake, FL 32836","Magic Kingdom Park"],["Epcot","Walt Disney World, Bay Lake, FL 32821","Epcot Walt Disney World"],["Hollywood Studios","Walt Disney World, Bay Lake, FL 34747","Disney's Hollywood Studios"],["Animal Kingdom","Walt Disney World, Bay Lake, FL 34747","Disney's Animal Kingdom Theme Park"],["Universal Studios","6000 Universal Blvd, Orlando, FL 32819","Universal Studios Florida"],["Islands of Adventure","6000 Universal Blvd, Orlando, FL 32819","Universal Islands of Adventure"],["Epic Universe","1001 Epic Blvd, Orlando, FL 32819"],["Disney Springs","1486 Buena Vista Dr, Lake Buena Vista, FL 32830"],["Chef Mickey's","Contemporary Resort, 4600 World Dr, Lake Buena Vista, FL 32830"],["Gatorland","14501 S Orange Blossom Trl, Orlando, FL 32837"],["ICON Park","8375 International Dr, Orlando, FL 32819"]]],
- ["COMPRAS",[["Vineland Premium Outlets","8200 Vineland Ave, Orlando, FL 32821"],["International Premium Outlets","4951 International Dr, Orlando, FL 32819"],["Apple Store Florida Mall","8001 S Orange Blossom Trl, Orlando, FL 32809"],["Walmart Turkey Lake Road","8990 Turkey Lake Rd, Orlando, FL 32819"]]],
- ["COMIDA",[["Camila's Restaurant","5458 International Dr, Orlando, FL 32819"],["Café Mineiro","6432 International Dr, Orlando, FL 32819"],["Gilson's Brazilian","5250 International Dr, Orlando, FL 32819"],["Ana's Brazilian Kitchen","8865 Commodity Cir, Ste 5, Orlando, FL 32819"]]]
+ ["BASE",[["Home2 Suites by Hilton","12107 Regency Village Dr, Orlando, FL 32821","28.3896527,-81.4867030"],["Aeroporto MCO","Terminal A · Alamo no Level 1","28.4321340,-81.3084045"]]],
+ ["PARQUES E PASSEIOS",[["Magic Kingdom","Estacionamento: Transportation & Ticket Center","28.4048644,-81.5801643"],["Epcot","Estacionamento: toll plaza do Epcot","28.3807890,-81.5557880"],["Hollywood Studios","Estacionamento: toll plaza do parque","28.3573368,-81.5512940"],["Animal Kingdom","Estacionamento do parque, Bay Lake","28.3530590,-81.5911770"],["Universal Studios","Parking Plaza, 6300 Universal Blvd","28.4739273,-81.4612826"],["Islands of Adventure","Mesmo estacionamento do Universal Studios","28.4739273,-81.4612826"],["Epic Universe","Estacionamento, 3101 Epic Blvd","28.4376808,-81.4444238"],["Disney Springs","Orange Garage, estacionamento gratuito","28.3691747,-81.5194779"],["Chef Mickey's","Contemporary Resort, 4600 World Dr","28.4143838,-81.5743846"],["Gatorland","14501 S Orange Blossom Trl, Orlando","28.3556496,-81.4022109"],["ICON Park","8375 International Dr, Orlando","28.4432375,-81.4692907"]]],
+ ["COMPRAS",[["Vineland Premium Outlets","8200 Vineland Ave, Orlando","28.3871744,-81.4923639"],["International Premium Outlets","4951 International Dr, Orlando","28.4746714,-81.4515288"],["Apple Store Florida Mall","8001 S Orange Blossom Trl, Orlando","28.4452562,-81.3940167"],["Walmart Turkey Lake Road","8990 Turkey Lake Rd, Orlando","28.4399415,-81.4764715"]]],
+ ["COMIDA",[["Camila's Restaurant","5458 International Dr, Orlando","28.4615245,-81.4531757"],["Café Mineiro","6432 International Dr, Orlando","28.4591972,-81.4689754"],["Gilson's Brazilian","5250 International Dr (mudou de endereço)","28.4679595,-81.4489195"],["Ana's Brazilian Kitchen","8865 Commodity Cir, Ste 5, Orlando","28.4426224,-81.4282272"]]]
 ];
 
 const CHECK=[
@@ -602,8 +602,10 @@ const CHECK=[
 ];
 
 /* ===== helpers ===== */
-const waze=q=>'https://waze.com/ul?q='+encodeURIComponent(q)+'&navigate=yes';
-const maps=q=>'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);
+const waze=q=>/^-?\d+\.\d+,-?\d+\.\d+$/.test(q)
+  ?'https://waze.com/ul?ll='+q+'&navigate=yes'
+  :'https://waze.com/ul?q='+encodeURIComponent(q)+'&navigate=yes';
+const maps=q=>'https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(q);
 const esc=s=>s.replace(/[<>&]/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]));
 const PIN='<svg viewBox="0 0 24 24"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>';
 
