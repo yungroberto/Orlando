@@ -131,6 +131,10 @@
   .go.prime{background:var(--ink);color:#fff}
   .go svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
+  .addrline{margin:-6px 20px 16px}
+  .addrline button{font-size:13px;color:var(--dim);text-align:left;line-height:1.4;padding:0}
+  .addrline span{font-weight:600;color:var(--lagoon)}
+  .row .a button{font-size:12.5px;color:var(--dim);text-align:left;line-height:1.35;padding:0}
   .notewrap{padding:0 20px 20px}
   .notewrap label{display:block;font-size:13px;font-weight:600;color:var(--dim);margin-bottom:8px}
   textarea{
@@ -156,6 +160,17 @@
   .desc{font-size:14px;color:var(--dim);line-height:1.55;margin:0 0 14px}
   .links{display:flex;flex-wrap:wrap;gap:9px}
 
+  .attach{margin-top:16px;padding-top:14px;border-top:1px solid var(--hair)}
+  .atl{font-size:11.5px;font-weight:700;color:var(--dim);letter-spacing:.04em;margin-bottom:6px}
+  .go.att{font-size:13px;padding:9px 14px;margin-top:10px;display:inline-block;background:#EEF1F9;color:var(--dim)}
+  .doc{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid var(--hair)}
+  .doc:last-child{border-bottom:0}
+  .doc .dn2{font-size:14.5px;font-weight:600;word-break:break-word}
+  .doc .ds{font-size:12px;color:var(--dim);margin-top:2px}
+  .doc .da{display:flex;gap:8px;flex:0 0 auto}
+  .doc a.open{background:#F1F3FA;border-radius:100px;padding:9px 14px;font-size:13.5px;font-weight:600}
+  .doc button.rm{color:#C9CEDD;font-size:20px;padding:0 4px}
+  .empty{color:#A6AEC6;font-size:14px;padding:10px 0}
   .row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid var(--hair)}
   .row:last-child{border-bottom:0}
   .row .n{font-size:15px;font-weight:600}
@@ -561,37 +576,37 @@ const DAYS=[
 ];
 
 const RES=[
- {t:"Alamo",s:"Retirada 11/09 no MCO · devolução 23/09",ic:"🚗",bg:"#EAF0FF",
-  codes:[["Reserva Alamo","alamo"]],
+ {t:"Alamo",id:"alamo",s:"Retirada 11/09 no MCO · devolução 23/09",ic:"🚗",bg:"#EAF0FF",
+  codes:[["Reserva Alamo","alamo","2115172941"]],
   info:"Balcão no Level 1 dos Terminais A e B (Level 4 no Terminal C). Os carros ficam no térreo do estacionamento, a pé. Com o Skip the Counter, vá direto ao veículo.",
   links:[["Abrir Alamo","https://www.alamo.com/"],["Ligar MCO","tel:+18443703164"]]},
- {t:"LATAM",s:"Ida 11/09, pouso 16h20 · volta 23/09, voo 22h15",ic:"✈️",bg:"#FFEFE6",
-  codes:[["Localizador LATAM","latam"]],
+ {t:"LATAM",id:"latam",s:"Ida 11/09, pouso 16h20 · volta 23/09, voo 22h15",ic:"✈️",bg:"#FFEFE6",
+  codes:[["Localizador LATAM","latam","IGSXLN"]],
   info:"Check-in abre 48h antes pelo app. Orlando está 1h atrás de São Paulo em setembro.",
   links:[["Abrir LATAM","https://www.latamairlines.com/br/pt"],["Brasil 0300","tel:03005705700"],["Do exterior","tel:+551128204816"]]},
- {t:"Home2 Suites by Hilton",s:"12107 Regency Village Dr, I-Drive South",ic:"🏨",bg:"#E9F7F4",
-  codes:[["Reserva Booking","booking"]],
-  info:"Check-in 16h, check-out 11h. Café grátis de segunda a sexta das 6h às 9h, sábado e domingo das 6h às 10h. Piscina aquecida, academia 24h, shuttle gratuito para a Disney. Estacionamento US$ 10,65 por dia.",
+ {t:"Home2 Suites by Hilton",id:"hotel",s:"12107 Regency Village Dr, I-Drive South",ic:"🏨",bg:"#E9F7F4",
+  codes:[["Reserva Booking","booking","5344792763"]],
+  info:"Chegando pela I-4, pegue a saída 70 (Daryl Carter Pkwy) e vire à direita na Regency Village Dr. Check-in 16h, check-out 11h. Café grátis de segunda a sexta das 6h às 9h, sábado e domingo das 6h às 10h. Piscina aquecida, academia 24h, shuttle gratuito para a Disney. Estacionamento US$ 10,65 por dia.",
   links:[["Ligar no hotel","tel:+14079441705"],["Booking","https://www.booking.com/"],["Waze até o hotel","waze"]]},
- {t:"Ingressos",s:"Já vinculados aos apps",ic:"🎟️",bg:"#F3EDFF",
+ {t:"Ingressos",id:"ingressos",s:"Já vinculados aos apps",ic:"🎟️",bg:"#F3EDFF",
   codes:[],
   info:"Disney: reservas de restaurante até 60 dias antes e Lightning Lane no próprio dia. Universal: o mesmo app serve para o Epic Universe e para as filas virtuais.",
   links:[["My Disney Experience","https://disneyworld.disney.go.com/"],["Universal Orlando","https://www.universalorlando.com/"]]},
- {t:"Visitor Toll Pass",s:"Retirar no MCO em 11/09",ic:"🛣️",bg:"#FFF6E3",
+ {t:"Visitor Toll Pass",id:"pedagio",s:"Retirar no MCO em 11/09",ic:"🛣️",bg:"#FFF6E3",
   codes:[],
   info:"Gratuito, cobra só a tarifa base. Reserve pelo app antes da viagem, retire o hangtag na máquina do Level 1 (Terminais A e B), cadastre a placa e pendure no retrovisor. Devolva antes de embarcar: sem devolução, cobram US$ 10. A alternativa da Alamo custa de US$ 3,95 a 5,35 por dia mais os pedágios.",
   links:[["Abrir Visitor Toll Pass","https://visitortollpass.com/"]]},
- {t:"Emergências",s:"Salve os números antes de embarcar",ic:"🆘",bg:"#FFEBEE",
+ {t:"Emergências",id:"emergencia",s:"Salve os números antes de embarcar",ic:"🆘",bg:"#FFEBEE",
   codes:[],
   info:"Consulado-Geral do Brasil em Orlando, 355 N Orange Ave. O plantão atende por WhatsApp apenas casos comprovados de emergência.",
   links:[["911","tel:911"],["Consulado","tel:+14076750604"],["Plantão consular","tel:+13213879716"],["Hotel","tel:+14079441705"],["Alamo","tel:+18443703164"]]}
 ];
 
 const LUG=[
- ["BASE",[["Home2 Suites by Hilton","12107 Regency Village Dr, Orlando, FL 32821","28.3896527,-81.4867030"],["Aeroporto MCO","Terminal A · Alamo no Level 1","28.4321340,-81.3084045"]]],
- ["PARQUES E PASSEIOS",[["Magic Kingdom","Estacionamento: Transportation & Ticket Center","28.4048644,-81.5801643"],["Epcot","Estacionamento: toll plaza do Epcot","28.3807890,-81.5557880"],["Hollywood Studios","Estacionamento: toll plaza do parque","28.3573368,-81.5512940"],["Animal Kingdom","Estacionamento do parque, Bay Lake","28.3530590,-81.5911770"],["Universal Studios","Parking Plaza, 6300 Universal Blvd","28.4739273,-81.4612826"],["Islands of Adventure","Mesmo estacionamento do Universal Studios","28.4739273,-81.4612826"],["Epic Universe","Estacionamento, 3101 Epic Blvd","28.4376808,-81.4444238"],["Disney Springs","Orange Garage, estacionamento gratuito","28.3691747,-81.5194779"],["Chef Mickey's","Contemporary Resort, 4600 World Dr","28.4143838,-81.5743846"],["Gatorland","14501 S Orange Blossom Trl, Orlando","28.3556496,-81.4022109"],["ICON Park","8375 International Dr, Orlando","28.4432375,-81.4692907"]]],
- ["COMPRAS",[["Vineland Premium Outlets","8200 Vineland Ave, Orlando","28.3871744,-81.4923639"],["International Premium Outlets","4951 International Dr, Orlando","28.4746714,-81.4515288"],["Apple Store Florida Mall","8001 S Orange Blossom Trl, Orlando","28.4452562,-81.3940167"],["Walmart Turkey Lake Road","8990 Turkey Lake Rd, Orlando","28.4399415,-81.4764715"]]],
- ["COMIDA",[["Camila's Restaurant","5458 International Dr, Orlando","28.4615245,-81.4531757"],["Café Mineiro","6432 International Dr, Orlando","28.4591972,-81.4689754"],["Gilson's Brazilian","5250 International Dr (mudou de endereço)","28.4679595,-81.4489195"],["Ana's Brazilian Kitchen","8865 Commodity Cir, Ste 5, Orlando","28.4426224,-81.4282272"]]]
+ ["BASE",[["Home2 Suites by Hilton","12107 Regency Village Dr, Orlando, FL 32821","28.3896527,-81.4867030"],["Aeroporto MCO","1 Jeff Fuqua Blvd, Orlando, FL 32827","28.4321340,-81.3084045"]]],
+ ["PARQUES E PASSEIOS",[["Magic Kingdom","1180 Seven Seas Dr, Lake Buena Vista, FL 32830","28.4048644,-81.5801643"],["Epcot","200 Epcot Center Dr, Lake Buena Vista, FL 32821","28.3807890,-81.5557880"],["Hollywood Studios","351 S Studio Dr, Lake Buena Vista, FL 32830","28.3573368,-81.5512940"],["Animal Kingdom","2901 Osceola Pkwy, Bay Lake, FL 32830","28.3530590,-81.5911770"],["Universal Studios","6000 Universal Blvd, Orlando, FL 32819","28.4739273,-81.4612826"],["Islands of Adventure","6000 Universal Blvd, Orlando, FL 32819","28.4739273,-81.4612826"],["Epic Universe","1001 Epic Blvd, Orlando, FL 32819","28.4376808,-81.4444238"],["Disney Springs","1486 Buena Vista Dr, Lake Buena Vista, FL 32830","28.3691747,-81.5194779"],["Chef Mickey's","4600 World Dr, Lake Buena Vista, FL 32830","28.4143838,-81.5743846"],["Gatorland","14501 S Orange Blossom Trl, Orlando, FL 32837","28.3556496,-81.4022109"],["ICON Park","8375 International Dr, Orlando, FL 32819","28.4432375,-81.4692907"]]],
+ ["COMPRAS",[["Vineland Premium Outlets","8200 Vineland Ave, Orlando, FL 32821","28.3871744,-81.4923639"],["International Premium Outlets","4951 International Dr, Orlando, FL 32819","28.4746714,-81.4515288"],["Apple Store Florida Mall","8001 S Orange Blossom Trl, Orlando, FL 32809","28.4452562,-81.3940167"],["Walmart Turkey Lake Road","8990 Turkey Lake Rd, Orlando, FL 32819","28.4399415,-81.4764715"]]],
+ ["COMIDA",[["Camila's Restaurant","5458 International Dr, Orlando, FL 32819","28.4615245,-81.4531757"],["Café Mineiro","6432 International Dr, Orlando, FL 32819","28.4591972,-81.4689754"],["Gilson's Brazilian","5250 International Dr, Orlando, FL 32819 (mudou)","28.4679595,-81.4489195"],["Ana's Brazilian Kitchen","8865 Commodity Cir, Ste 5, Orlando, FL 32819","28.4426224,-81.4282272"]]]
 ];
 
 const CHECK=[
@@ -600,6 +615,37 @@ const CHECK=[
  ["NA MALA",["Roupa de piscina para todos","Protetor solar FPS 50+","Capa de chuva leve ou poncho","Sandálias de piscina e tênis confortável","Óculos de sol e bolsa leve de parque","Powerbank","Ventilador de mão portátil","Garrafa térmica"]],
  ["CHEGANDO",["Ativar o Visitor Toll Pass no MCO","Confirmar horários do shuttle na recepção","Pegar o Coupon Book no Guest Services do outlet"]]
 ];
+
+
+const ADDR={
+ "28.3896527,-81.4867030":"12107 Regency Village Dr, Orlando, FL 32821",
+ "28.4321340,-81.3084045":"1 Jeff Fuqua Blvd, Orlando, FL 32827",
+ "28.4048644,-81.5801643":"1180 Seven Seas Dr, Lake Buena Vista, FL 32830",
+ "28.3807890,-81.5557880":"200 Epcot Center Dr, Lake Buena Vista, FL 32821",
+ "28.3573368,-81.5512940":"351 S Studio Dr, Lake Buena Vista, FL 32830",
+ "28.3530590,-81.5911770":"2901 Osceola Pkwy, Bay Lake, FL 32830",
+ "28.4739273,-81.4612826":"6000 Universal Blvd, Orlando, FL 32819",
+ "28.4376808,-81.4444238":"1001 Epic Blvd, Orlando, FL 32819",
+ "28.3691747,-81.5194779":"1486 Buena Vista Dr, Lake Buena Vista, FL 32830",
+ "28.4143838,-81.5743846":"4600 World Dr, Lake Buena Vista, FL 32830",
+ "28.3556496,-81.4022109":"14501 S Orange Blossom Trl, Orlando, FL 32837",
+ "28.4432375,-81.4692907":"8375 International Dr, Orlando, FL 32819",
+ "28.3871744,-81.4923639":"8200 Vineland Ave, Orlando, FL 32821",
+ "28.4746714,-81.4515288":"4951 International Dr, Orlando, FL 32819",
+ "28.4452562,-81.3940167":"8001 S Orange Blossom Trl, Orlando, FL 32809",
+ "28.4399415,-81.4764715":"8990 Turkey Lake Rd, Orlando, FL 32819",
+ "28.4615245,-81.4531757":"5458 International Dr, Orlando, FL 32819",
+ "28.4591972,-81.4689754":"6432 International Dr, Orlando, FL 32819",
+ "28.4679595,-81.4489195":"5250 International Dr, Orlando, FL 32819",
+ "28.4426224,-81.4282272":"8865 Commodity Cir, Ste 5, Orlando, FL 32819"
+};
+/* copiar endereço em qualquer tela */
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-copyaddr]');if(!b)return;
+  e.preventDefault();
+  navigator.clipboard?.writeText(b.dataset.copyaddr);
+  const o=b.innerHTML;b.innerHTML='endereço copiado ✓';setTimeout(()=>b.innerHTML=o,1400);
+});
 
 /* ===== helpers ===== */
 const waze=q=>/^-?\d+\.\d+,-?\d+\.\d+$/.test(q)
@@ -657,6 +703,7 @@ async function renderDay(){
       ${d.kind==='disney'?`<a class="go" href="https://disneyworld.disney.go.com/" target="_blank" rel="noopener">Disney</a>`:''}
       ${d.kind==='universal'?`<a class="go" href="https://www.universalorlando.com/" target="_blank" rel="noopener">Universal</a>`:''}
     </div>
+    ${ADDR[d.go.q]?`<p class="addrline"><button data-copyaddr="${ADDR[d.go.q]}">${ADDR[d.go.q]}<span> · copiar</span></button></p>`:''}
     <div class="notewrap"><label for="nt">Anotações do dia</label>
       <textarea id="nt" placeholder="Onde estacionou, o que ficou pendente, o que valeu a pena…"></textarea></div>
   </article>`;
@@ -666,17 +713,34 @@ async function renderDay(){
 }
 
 /* ===== reservas ===== */
-document.getElementById('p-reservas').innerHTML=`<div class="sect">RESERVAS E CONTATOS</div>`+RES.map(r=>`
+document.getElementById('p-reservas').innerHTML=`<div class="sect">DOCUMENTOS NO APARELHO</div>
+  <div class="box">
+    <div class="boxhead"><div class="ico" style="background:#EAF2FF">📄</div>
+      <div><h3>Meus documentos</h3><div class="sub">I-94, vouchers, seguro, cópia do passaporte</div></div></div>
+    <div data-slot="geral"></div>
+    <div class="links" style="margin-top:14px">
+      <label class="go prime" for="docFile">Anexar PDF ou foto</label>
+      <input id="docFile" type="file" accept="application/pdf,image/*" data-slotin="geral" hidden>
+    </div>
+    <p class="desc" style="margin:14px 0 0">Os arquivos ficam guardados apenas neste aparelho e continuam disponíveis sem internet. Sua esposa precisa anexar no iPhone dela também.</p>
+  </div>
+  <div class="sect">RESERVAS E CONTATOS</div>`+RES.map(r=>`
   <div class="box">
     <div class="boxhead"><div class="ico" style="background:${r.bg}">${r.ic}</div>
       <div><h3>${r.t}</h3><div class="sub">${r.s}</div></div></div>
-    ${r.codes.map(([k,id])=>`<div class="kv"><div style="flex:1"><div class="k">${k}</div><input class="cv" data-id="${id}" placeholder="toque e preencha" autocomplete="off" spellcheck="false"></div><button data-copyid="${id}">copiar</button></div>`).join('')}
+    ${r.codes.map(([k,id,def0])=>`<div class="kv"><div style="flex:1"><div class="k">${k}</div><input class="cv" data-id="${id}" data-def="${def0||''}" placeholder="toque e preencha" autocomplete="off" spellcheck="false"></div><button data-copyid="${id}">copiar</button></div>`).join('')}
     <p class="desc">${r.info}</p>
     <div class="links">${r.links.map(([n,u])=>`<a class="go" href="${u==='waze'?waze(HOTEL):u}" target="_blank" rel="noopener">${n}</a>`).join('')}</div>
+    <div class="attach">
+      <div class="atl">Anexos</div>
+      <div data-slot="${r.id}"></div>
+      <label class="go att" for="f_${r.id}">+ anexar PDF ou foto</label>
+      <input id="f_${r.id}" type="file" accept="application/pdf,image/*" data-slotin="${r.id}" hidden>
+    </div>
   </div>`).join('');
 document.querySelectorAll('.cv').forEach(inp=>{
   const k='orl:code:'+inp.dataset.id;
-  store.get(k).then(v=>{if(v)inp.value=v});
+  store.get(k).then(v=>{inp.value=(v!==null&&v!==undefined&&v!=='')?v:(inp.dataset.def||'')});
   let tm;inp.addEventListener('input',()=>{clearTimeout(tm);tm=setTimeout(()=>store.set(k,inp.value.trim()),400)});
 });
 document.getElementById('p-reservas').addEventListener('click',e=>{
@@ -687,10 +751,53 @@ document.getElementById('p-reservas').addEventListener('click',e=>{
   const o=b.textContent;b.textContent='copiado ✓';setTimeout(()=>b.textContent=o,1300);
 });
 
+
+/* ===== documentos guardados no aparelho (IndexedDB) ===== */
+const DB=(()=>{let p;const open=()=>p||(p=new Promise((res,rej)=>{
+  const r=indexedDB.open('orl-docs',1);
+  r.onupgradeneeded=()=>r.result.createObjectStore('f',{keyPath:'id'});
+  r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);}));
+  const tx=(mode,fn)=>open().then(db=>new Promise((res,rej)=>{
+    const req=fn(db.transaction('f',mode).objectStore('f'));
+    req.onsuccess=()=>res(req.result);req.onerror=()=>rej(req.error);}));
+  return {all:()=>tx('readonly',s=>s.getAll()),put:r=>tx('readwrite',s=>s.put(r)),del:id=>tx('readwrite',s=>s.delete(id))};
+})();
+const kb=n=>n<1048576?Math.round(n/1024)+' KB':(n/1048576).toFixed(1)+' MB';
+async function renderDocs(){
+  const boxes=[...document.querySelectorAll('[data-slot]')];if(!boxes.length)return;
+  let list=[];
+  try{list=await DB.all()}catch(e){boxes.forEach(b=>b.innerHTML='<div class="empty">Este navegador não guarda arquivos.</div>');return}
+  boxes.forEach(box=>{
+    const mine=list.filter(f=>(f.slot||'geral')===box.dataset.slot);
+    box.innerHTML=mine.length?mine.map(f=>`<div class="doc">
+      <div><div class="dn2">${esc(f.name)}</div><div class="ds">${kb(f.size)} · ${new Date(f.at).toLocaleDateString('pt-BR')}</div></div>
+      <div class="da"><a class="open" data-open="${f.id}" href="#">abrir</a><button class="rm" data-rm="${f.id}" aria-label="remover">×</button></div>
+    </div>`).join(''):'<div class="empty">Nenhum arquivo anexado.</div>';
+  });
+  document.querySelectorAll('[data-open]').forEach(a=>a.onclick=async e=>{
+    e.preventDefault();
+    const f=(await DB.all()).find(x=>x.id===a.dataset.open);if(!f)return;
+    const url=URL.createObjectURL(f.blob);window.open(url,'_blank');
+    setTimeout(()=>URL.revokeObjectURL(url),60000);
+  });
+  document.querySelectorAll('[data-rm]').forEach(b=>b.onclick=async()=>{
+    if(!confirm('Remover este arquivo?'))return;
+    await DB.del(b.dataset.rm);renderDocs();
+  });
+}
+document.querySelectorAll('input[data-slotin]').forEach(inp=>inp.addEventListener('change',async()=>{
+  const f=inp.files&&inp.files[0];if(!f)return;
+  try{
+    await DB.put({id:'d'+Date.now(),slot:inp.dataset.slotin,name:f.name,size:f.size,type:f.type,at:Date.now(),blob:f});
+    inp.value='';renderDocs();
+  }catch(e){alert('Não foi possível guardar o arquivo.')}
+}));
+renderDocs();
+
 /* ===== lugares ===== */
 document.getElementById('p-lugares').innerHTML=LUG.map(([g,l])=>`<div class="sect">${g}</div>
   <div class="box" style="padding-top:6px;padding-bottom:6px">${l.map(([n,a,q])=>`
-    <div class="row"><div><div class="n">${n}</div><div class="a">${a}</div></div>
+    <div class="row"><div><div class="n">${n}</div><div class="a"><button data-copyaddr="${a}">${a}</button></div></div>
     <div class="rowgo"><a class="circ w" href="${waze(q||a)}" target="_blank" rel="noopener" aria-label="Waze até ${n}">W</a>
     <a class="circ m" href="${maps(q||a)}" target="_blank" rel="noopener" aria-label="Maps de ${n}">M</a></div></div>`).join('')}</div>`).join('');
 
