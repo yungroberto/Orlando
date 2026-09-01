@@ -762,23 +762,21 @@ const DB=(()=>{let p;const open=()=>p||(p=new Promise((res,rej)=>{
     req.onsuccess=()=>res(req.result);req.onerror=()=>rej(req.error);}));
   return {all:()=>tx('readonly',s=>s.getAll()),put:r=>tx('readwrite',s=>s.put(r)),del:id=>tx('readwrite',s=>s.delete(id))};
 })();
+let URLS=[];
 const kb=n=>n<1048576?Math.round(n/1024)+' KB':(n/1048576).toFixed(1)+' MB';
 async function renderDocs(){
   const boxes=[...document.querySelectorAll('[data-slot]')];if(!boxes.length)return;
   let list=[];
   try{list=await DB.all()}catch(e){boxes.forEach(b=>b.innerHTML='<div class="empty">Este navegador não guarda arquivos.</div>');return}
+  URLS.forEach(u=>URL.revokeObjectURL(u));URLS=[];
   boxes.forEach(box=>{
     const mine=list.filter(f=>(f.slot||'geral')===box.dataset.slot);
-    box.innerHTML=mine.length?mine.map(f=>`<div class="doc">
+    box.innerHTML=mine.length?mine.map(f=>{
+      const url=URL.createObjectURL(f.blob);URLS.push(url);
+      return `<div class="doc">
       <div><div class="dn2">${esc(f.name)}</div><div class="ds">${kb(f.size)} · ${new Date(f.at).toLocaleDateString('pt-BR')}</div></div>
-      <div class="da"><a class="open" data-open="${f.id}" href="#">abrir</a><button class="rm" data-rm="${f.id}" aria-label="remover">×</button></div>
-    </div>`).join(''):'<div class="empty">Nenhum arquivo anexado.</div>';
-  });
-  document.querySelectorAll('[data-open]').forEach(a=>a.onclick=async e=>{
-    e.preventDefault();
-    const f=(await DB.all()).find(x=>x.id===a.dataset.open);if(!f)return;
-    const url=URL.createObjectURL(f.blob);window.open(url,'_blank');
-    setTimeout(()=>URL.revokeObjectURL(url),60000);
+      <div class="da"><a class="open" href="${url}" target="_blank" rel="noopener">abrir</a><a class="open" href="${url}" download="${esc(f.name)}">salvar</a><button class="rm" data-rm="${f.id}" aria-label="remover">×</button></div>
+    </div>`}).join(''):'<div class="empty">Nenhum arquivo anexado.</div>';
   });
   document.querySelectorAll('[data-rm]').forEach(b=>b.onclick=async()=>{
     if(!confirm('Remover este arquivo?'))return;
